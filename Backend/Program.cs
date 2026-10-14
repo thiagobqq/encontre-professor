@@ -1,8 +1,12 @@
+using Backend.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Swagger / OpenAPI (padrão do template .NET 8)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IProfessorRepository>(_ =>
+    new JsonProfessorRepository(Path.Combine(AppContext.BaseDirectory, "professores.json")));
 
 var app = builder.Build();
 

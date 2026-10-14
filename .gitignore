@@ -38,6 +38,7 @@ artifacts/
 *.sln.docstates
 *.userprefs
 *.rsuser
+*.idea/
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user

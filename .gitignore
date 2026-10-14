@@ -1,0 +1,65 @@
+# ===== .NET / C# =====
+# Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Ll]og/
+[Ll]ogs/
+[Tt]est[Rr]esult*/
+*.VisualState.xml
+TestResult.xml
+nunit-result.xml
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!.gitkeep
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio / Rider / VS Code user files
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+*.rsuser
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Visual Studio Code (keep the whole folder ignored except shared config above)
+.vscode/
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.swp
+*~
+
+# ===== Logs / Secrets =====
+*.log
+npm-debug.log*
+# Local settings that may contain secrets. Remove these lines if you
+# intend to track appsettings.Development.json.
+appsettings.*.local.json
+*.local.json
+secrets.json

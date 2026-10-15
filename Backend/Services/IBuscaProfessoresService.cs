@@ -4,5 +4,5 @@ namespace Backend.Services;
 
 public interface IBuscaProfessoresService
 {
-    BuscaProfessoresResponse Buscar(BuscaProfessoresRequest request);
+    BuscaProfessoresResponse Buscar(ParametrosBusca parametros);
 }

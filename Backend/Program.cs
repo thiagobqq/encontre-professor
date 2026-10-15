@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IProfessorRepository>(_ =>
     new JsonProfessorRepository(Path.Combine(AppContext.BaseDirectory, "professores.json")));
+builder.Services.AddSingleton<ValidadorBusca>();
 builder.Services.AddSingleton<IBuscaProfessoresService, BuscaProfessoresService>();
 
 var app = builder.Build();

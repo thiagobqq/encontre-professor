@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/* Modo escuro por classe no <html>, permitindo o usuário alternar.
+   (Por padrão o `dark:` do Tailwind seguiria só o sistema.) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =====================================================================
+   Cores da marca — iguais nos dois temas.
+   Verde vibrante, bordas grossas, cantos arredondados e fonte
+   arredondada: a linguagem "chunky" do Duolingo.
+   ===================================================================== */
+@theme {
+  --font-sans:
+    'Nunito', ui-rounded, 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --color-duo-green: #58cc02;
+  --color-duo-green-dark: #46a302;
+  --color-duo-blue: #1cb0f6;
+  --color-duo-purple: #ce82ff;
+  --color-duo-orange: #ff9600;
+  --color-duo-red: #ff4b4b;
+  --color-duo-yellow: #ffc800;
+
+  --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+/* =====================================================================
+   Tokens semânticos. Com `inline`, as utilidades apontam para as
+   variáveis abaixo, que trocam de valor no tema escuro.
+   ===================================================================== */
+@theme inline {
+  --color-page: var(--page);
+  --color-page-glass: var(--page-glass);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-line: var(--line);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+}
+
+:root {
+  color-scheme: light;
+
+  --page: #ffffff;
+  --page-glass: #ffffffe6;
+  --surface: #ffffff;
+  --surface-soft: #f7f7f7;
+  --line: #e5e5e5;
+
+  --ink: #4b4b4b;
+  --ink-soft: #777777;
+  --ink-faint: #afafaf;
+
+  --accent: #0f7ab0;
+  --accent-soft: #ddf4ff;
+  --success: #3f8f02;
+  --success-soft: #d7ffb8;
+  --danger: #c62828;
+  --danger-soft: #ffdfe0;
+  --warning: #9a6b00;
+  --warning-soft: #fff4cc;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --page: #131f24;
+  --page-glass: #131f24e6;
+  --surface: #1b2b33;
+  --surface-soft: #22333c;
+  --line: #36474f;
+
+  --ink: #f1f7fb;
+  --ink-soft: #b9cdd6;
+  --ink-faint: #7d97a4;
+
+  --accent: #56ccf2;
+  --accent-soft: #113d52;
+  --success: #8ee65c;
+  --success-soft: #22381a;
+  --danger: #ff8a8a;
+  --danger-soft: #46222a;
+  --warning: #ffd54f;
+  --warning-soft: #463a12;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-page font-sans text-ink antialiased;
+    margin: 0;
+    min-height: 100svh;
+  }
+
+  /* Foco visível e redondo, no espírito da marca. */
+  :focus-visible {
+    @apply outline-duo-blue outline-2 outline-offset-2;
+  }
+}
+
+@layer components {
+  /* Botão "chunky": borda inferior grossa que "afunda" ao pressionar,
+     sem deslocar o layout (só transform). */
+  .btn-3d {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-2xl
+      border-b-4 px-6 py-3 text-base font-extrabold tracking-wide uppercase
+      transition-[transform,background-color,border-color] duration-100 select-none
+      disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-3d:not(:disabled):active {
+    transform: translateY(2px);
+  }
+
+  .card-duo {
+    @apply rounded-3xl border-2 border-line bg-surface;
+  }
+}
